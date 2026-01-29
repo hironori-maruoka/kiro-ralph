@@ -36,3 +36,19 @@
 - Committed changes to git
 
 Next task: Task 2.1 - Create basic type definitions
+
+
+## Task 2.1: Create basic type definitions - COMPLETED
+
+- Created src/engine/types.ts with all core type definitions:
+  - CellAddress interface (col, row)
+  - CellError type (ERR, CYC)
+  - CellValue type (number | string | CellError)
+  - ASTNode type (number, cellRef, range, binaryOp, function)
+  - CellData interface (rawContent, parsedFormula, evaluatedValue, dependencies)
+  - ParseResult type (success/failure)
+  - EvaluationResult type (success/failure)
+  - Helper functions: isError, createError, createCycleError
+- Committed changes to git
+
+Next task: Task 2.2 - Implement address conversion utilities
