@@ -77,3 +77,16 @@ Next task: Task 2.3 - Create unit tests for address conversion
 - Committed changes to git
 
 Next task: Task 2.4 - Create SpreadsheetEngine basic structure
+
+
+## Task 2.4: Create SpreadsheetEngine basic structure - COMPLETED
+
+- Created src/engine/engine.ts with SpreadsheetEngine class:
+  - cells Map for storing cell data
+  - setCellContent method (basic implementation)
+  - getCellValue method
+  - getCellDisplayValue method (formats errors as #ERR, #CYC)
+  - recalculate method stub (to be implemented later)
+- Committed changes to git
+
+Next task: Task 3.1 - Implement FormulaParser class
