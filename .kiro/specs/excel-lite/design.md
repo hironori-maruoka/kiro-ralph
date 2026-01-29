@@ -1,8 +1,8 @@
-# 設計書: Excel Lite
+# 設計書: Spreadsheet Sample
 
 ## 概要
 
-Excel Liteは、Webブラウザ上で動作する軽量なスプレッドシートアプリケーションです。本システムは、計算ロジック（Spreadsheet Engine）とUIコンポーネントを明確に分離したアーキテクチャを採用します。エンジン層はUIに依存せず、純粋なTypeScriptで実装され、徹底的なテストカバレッジを実現します。
+Spreadsheet Sampleは、Webブラウザ上で動作する軽量なスプレッドシートアプリケーションです。本システムは、計算ロジック（Spreadsheet Engine）とUIコンポーネントを明確に分離したアーキテクチャを採用します。エンジン層はUIに依存せず、純粋なTypeScriptで実装され、徹底的なテストカバレッジを実現します。
 
 主要機能：
 - 10列×20行のグリッド表示
@@ -543,7 +543,7 @@ type CellError =
 - 普遍的なプロパティの検証
 - 各プロパティテストは最低100回の反復を実行
 - 各テストは設計書のプロパティを参照するタグを含む
-- タグ形式: **Feature: excel-lite, Property {番号}: {プロパティテキスト}**
+- タグ形式: **Feature: spreadsheet-sample, Property {番号}: {プロパティテキスト}**
 
 ### テストライブラリ
 
@@ -643,7 +643,7 @@ npm run test:coverage # カバレッジレポート生成
 ## ディレクトリ構造
 
 ```
-excel-lite/
+spreadsheet-sample/
 ├── src/
 │   ├── engine/
 │   │   ├── parser.ts           # FormulaParser

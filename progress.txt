@@ -119,8 +119,8 @@ Next task: Task 3.2 - Create property tests for parser
   - Property 13: Range notation parsing (A1:B5 format)
 - Each property test runs 100 iterations with random inputs
 - Fixed package.json test:property script to use file path filter
-- Moved all source files from /workspaces/kiro-ralph/src to /workspaces/kiro-ralph/excel-lite/src
-- Moved all test files from /workspaces/kiro-ralph/tests to /workspaces/kiro-ralph/excel-lite/tests
+- Moved all source files from /workspaces/kiro-ralph/src to /workspaces/kiro-ralph/spreadsheet-sample/src
+- Moved all test files from /workspaces/kiro-ralph/tests to /workspaces/kiro-ralph/spreadsheet-sample/tests
 - All 4 property tests pass successfully
 - Committed changes to git
 
