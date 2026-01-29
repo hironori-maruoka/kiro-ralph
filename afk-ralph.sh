@@ -1,20 +1,27 @@
 #!/bin/bash
+set -euo pipefail
+echo "START afk-ralph.sh"
 
 SPEC_DIR=".kiro/specs/excel-lite"
 
-for _ in {1..10}; do
-    result=$(kiro-cli chat --no-interactive --trust-all-tools \
-"【要件定義】
-$(cat ${SPEC_DIR}/requirements.md)
+if [ -z "${1:-}" ]; then
+  echo "Usage: $0 <iterations>"
+  exit 1
+fi
+
+build_prompt() {
+  cat <<'PROMPT'
+【要件定義】
+__REQ__
 
 【設計】
-$(cat ${SPEC_DIR}/design.md)
+__DES__
 
 【タスク一覧】
-$(cat ${SPEC_DIR}/tasks.md)
+__TASKS__
 
 【進捗】
-$(cat progress.txt 2>/dev/null || echo 'まだ進捗なし')
+__PROGRESS__
 
 1. 要件と設計を理解する
 2. タスク一覧と進捗を確認し、次の未完了タスクを見つける
@@ -22,9 +29,30 @@ $(cat progress.txt 2>/dev/null || echo 'まだ進捗なし')
 4. 変更をコミットする
 5. progress.txtに完了した内容を追記する
 1回の実行で1タスクのみ実装すること
-全タスク完了時は <promise>COMPLETE</promise> を出力すること")
+全タスク完了時は <promise>COMPLETE</promise> を出力すること
+PROMPT
+}
 
-    if [[ "$result" == *"<promise>COMPLETE</promise>"* ]]; then
-        break
-    fi
+for ((i=1; i<=${1}; i++)); do
+  echo "loop iteration $i"
+
+  req="$(cat "${SPEC_DIR}/requirements.md")"
+  des="$(cat "${SPEC_DIR}/design.md")"
+  tasks="$(cat "${SPEC_DIR}/tasks.md")"
+  progress="$(cat progress.txt 2>/dev/null || echo 'まだ進捗なし')"
+
+  prompt="$(build_prompt)"
+  prompt="${prompt/__REQ__/$req}"
+  prompt="${prompt/__DES__/$des}"
+  prompt="${prompt/__TASKS__/$tasks}"
+  prompt="${prompt/__PROGRESS__/$progress}"
+
+  logfile="/tmp/kiro-iteration-${i}.log"
+
+  kiro-cli chat --no-interactive --trust-all-tools "$prompt" 2>&1 | tee "$logfile"
+
+  if grep -q "<promise>COMPLETE</promise>" "$logfile"; then
+    echo "PRD complete after $i iterations."
+    exit 0
+  fi
 done

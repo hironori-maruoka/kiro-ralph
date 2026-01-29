@@ -8,7 +8,7 @@
 
   "containerUser": "vscode",
 
-  "postCreateCommand": "bash -lc 'set -euo pipefail; sudo apt-get update; sudo apt-get install -y curl ca-certificates; curl -fsSL https://cli.kiro.dev/install | bash; echo \"export PATH=\\\"$HOME/.local/bin:$PATH\\\"\" >> ~/.bashrc; export PATH=\"$HOME/.local/bin:$PATH\"; kiro-cli --version'",
+  "postCreateCommand": "bash -lc 'set -euo pipefail; sudo apt-get update; sudo apt-get install -y curl ca-certificates; sudo chown -R vscode:vscode /home/vscode/.kiro; curl -fsSL https://cli.kiro.dev/install | bash; echo \"export PATH=\\\"$HOME/.local/bin:$PATH\\\"\" >> ~/.bashrc; export PATH=\"$HOME/.local/bin:$PATH\"; sudo apt-get install -y nodejs npm; cd /workspaces/kiro-ralph/excel-lite; if [ -f package-lock.json ]; then npm ci; else npm install; fi; kiro-cli --version; node --version; npm --version'",
 
   "customizations": {
     "vscode": {
