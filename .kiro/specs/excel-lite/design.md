@@ -226,7 +226,27 @@ function Grid({ engine, rows, cols }: GridProps): JSX.Element;
 - 選択状態の管理
 - キーボードナビゲーション
 
-#### 2. Cell Component
+#### 2. FormulaBar Component
+
+数式バーを表示するReactコンポーネント。
+
+```typescript
+interface FormulaBarProps {
+  selectedCell: CellAddress | null;
+  cellContent: string;
+  onContentChange: (newContent: string) => void;
+}
+
+function FormulaBar(props: FormulaBarProps): JSX.Element;
+```
+
+**責務:**
+- 選択中のセル番地の表示（例: A1）
+- セルの生の入力内容の表示（数式の場合は`=`を含む）
+- 数式バーでの編集機能
+- 編集内容のセルへの反映
+
+#### 3. Cell Component
 
 個別のセルを表示するReactコンポーネント。
 
@@ -246,7 +266,7 @@ function Cell(props: CellProps): JSX.Element;
 ```
 
 **状態:**
-- 表示モード: 計算結果を表示
+- 表示モード: 計算結果を表示（空セルは空白、値0のセルは"0"を表示）
 - 編集モード: 入力フィールドを表示
 
 **イベント:**
@@ -255,6 +275,11 @@ function Cell(props: CellProps): JSX.Element;
 - Enter: 編集モード開始（選択時）/ コミット（編集時）
 - Escape: 編集キャンセル
 - 外側クリック: コミット
+
+**表示ルール:**
+- 空セル（値なし）: 空白を表示
+- 数値0: "0"を表示
+- エラー: "#ERR"または"#CYC"を表示
 
 ### Application Layer
 

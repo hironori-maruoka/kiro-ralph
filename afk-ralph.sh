@@ -11,7 +11,7 @@ fi
 
 build_prompt() {
   cat <<'PROMPT'
-【要件定義】
+【要件】
 __REQ__
 
 【設計】
@@ -25,13 +25,16 @@ __PROGRESS__
 
 1. 要件と設計を理解する
 2. タスク一覧と進捗を確認し、次の未完了タスクを見つける
-3. そのタスクを実装する
+3. そのタスクを実行する
 4. 変更をコミットする
-5. progress.txtに完了した内容を追記する
+5. 完了後、タスク一覧のチェック[ ]をつける
+6. progress.txtに完了した内容を追記する
 1回の実行で1タスクのみ実装すること
 npm run test は禁止。必ず npm run test:unit または npm run test -- --run を使う
 npm run dev / vite / vitest 単体実行など 常駐プロセスは禁止
 必ず 一回で終了するコマンドのみ実行すること
+npx を使う場合は必ず --yes を付けること
+対話確認が出るコマンドは禁止
 全タスク完了時は <promise>COMPLETE</promise> を出力すること
 PROMPT
 }

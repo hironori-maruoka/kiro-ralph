@@ -90,3 +90,75 @@ Next task: Task 2.4 - Create SpreadsheetEngine basic structure
 - Committed changes to git
 
 Next task: Task 3.1 - Implement FormulaParser class
+
+
+## Task 3.1: Implement FormulaParser class - COMPLETED
+
+- Created src/engine/parser.ts with FormulaParser class:
+  - parse method: validates formula starts with '=' and parses expression
+  - Recursive descent parser with operator precedence (*, / before +, -)
+  - parseExpression, parseAddSub, parseMulDiv, parsePrimary methods
+  - Supports numbers (including decimals)
+  - Supports binary operators: +, -, *, /
+  - Supports cell references (A1 format)
+  - Supports ranges (A1:B5 format)
+  - Supports functions: SUM, AVG (case-insensitive)
+  - Supports parentheses for grouping
+  - Returns ParseResult with success/failure and AST or error message
+- Committed changes to git
+
+Next task: Task 3.2 - Create property tests for parser
+
+
+## Task 3.2: Create property tests for parser - COMPLETED
+
+- Created tests/properties/parser.property.test.ts with property-based tests:
+  - Property 8: Input classification accuracy (formulas vs literals)
+  - Property 9: Arithmetic operator parsing (+, -, *, /)
+  - Property 10: Syntax error detection
+  - Property 13: Range notation parsing (A1:B5 format)
+- Each property test runs 100 iterations with random inputs
+- Fixed package.json test:property script to use file path filter
+- Moved all source files from /workspaces/kiro-ralph/src to /workspaces/kiro-ralph/excel-lite/src
+- Moved all test files from /workspaces/kiro-ralph/tests to /workspaces/kiro-ralph/excel-lite/tests
+- All 4 property tests pass successfully
+- Committed changes to git
+
+Next task: Task 3.3 - Create unit tests for parser
+
+
+## Task 3.3: Create unit tests for parser - COMPLETED
+
+- Created tests/engine/parser.test.ts with comprehensive unit tests:
+  - Formula recognition (starts with =)
+  - Number literals (integers, decimals)
+  - Arithmetic operators (+, -, *, /)
+  - Operator precedence and parentheses
+  - Cell references (A1, B2, etc.)
+  - Range notation (A1:B5)
+  - Functions (SUM, AVG, case-insensitive)
+  - Error cases (empty formula, invalid syntax, unmatched parentheses, invalid references, unknown functions)
+  - Complex expressions (nested operations, multiple functions)
+- All 28 unit tests pass successfully
+- Total: 115 tests passing across all test files
+- Committed changes to git
+
+Next task: Task 4.1 - Implement CellEvaluator class
+
+
+## Task 4.1: Implement CellEvaluator class - COMPLETED
+
+- Created src/engine/evaluator.ts with CellEvaluator class:
+  - evaluate method: evaluates AST and returns EvaluationResult
+  - evaluateNode method: recursive evaluation of AST nodes
+  - Supports number literals
+  - Supports cell references (empty cells treated as 0)
+  - Supports binary operators (+, -, *, /)
+  - Supports SUM and AVG functions with range arguments
+  - Error propagation from referenced cells
+  - Division by zero error handling
+  - Non-numeric values ignored in functions
+- EvaluationContext interface for cell value retrieval
+- Committed changes to git
+
+Next task: Task 4.2 - Create property tests for evaluator
