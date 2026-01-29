@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SPEC_DIR=".kiro/specs/excel-lite"
+SPEC_DIR=".kiro/specs/spreadsheet-sample"
 
 kiro-cli chat --no-interactive --trust-all-tools \
 "【要件定義】
