@@ -1,0 +1,20 @@
+{
+  "name": "Ralph Sandbox (Kiro CLI only)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  "mounts": [
+    "source=ralph-sandbox-kiro-${devcontainerId},target=/home/vscode/.kiro,type=volume"
+  ],
+
+  "containerUser": "vscode",
+
+  "postCreateCommand": "bash -lc 'set -euo pipefail; sudo apt-get update; sudo apt-get install -y curl ca-certificates; curl -fsSL https://cli.kiro.dev/install | bash; echo \"export PATH=\\\"$HOME/.local/bin:$PATH\\\"\" >> ~/.bashrc; export PATH=\"$HOME/.local/bin:$PATH\"; kiro-cli --version'",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  }
+}
