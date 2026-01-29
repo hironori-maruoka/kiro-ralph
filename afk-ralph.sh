@@ -28,14 +28,14 @@ __PROGRESS__
 3. そのタスクを実行する
 4. 変更をコミットする
 5. 完了後、.kiro/specs/spreadsheet-sample/tasks.md のチェックボックスを [ ] から [x] に更新する（必須）
-6. progress.txtに完了した内容を追記する
+6. /workspaces/kiro-ralph/progress.txt に完了した内容を追記する（必須）
 1回の実行で1タスクのみ実装すること
 npm run test は禁止。必ず npm run test:unit または npm run test -- --run を使う
 npm run dev / vite / vitest 単体実行など 常駐プロセスは禁止
 必ず 一回で終了するコマンドのみ実行すること
 npx を使う場合は必ず --yes を付けること
 対話確認が出るコマンドは禁止
-spreadsheet-sample/ ディレクトリ外にファイルを作成しないこと
+spreadsheet-sample/ ディレクトリ外にファイルを作成しないこと（progress.txtへの追記は例外）
 全タスク完了時のみ <promise>COMPLETE</promise> を出力すること
 tasks.mdに未完了タスク [ ] が残っている場合は絶対に <promise>COMPLETE</promise> を出力しないこと
 PROMPT
