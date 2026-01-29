@@ -52,3 +52,28 @@ Next task: Task 2.1 - Create basic type definitions
 - Committed changes to git
 
 Next task: Task 2.2 - Implement address conversion utilities
+
+
+## Task 2.2: Implement address conversion utilities - COMPLETED
+
+- Created src/utils/address.ts with:
+  - parseAddress function: converts string (e.g., "A1") to CellAddress
+  - formatAddress function: converts CellAddress to string
+  - Validates column range (A-J) and row range (1-20)
+- Committed changes to git
+
+Next task: Task 2.3 - Create unit tests for address conversion
+
+
+## Task 2.3: Create unit tests for address conversion - COMPLETED
+
+- Created tests/engine/address.test.ts with comprehensive tests:
+  - Valid address parsing (A1, J20, B5)
+  - Invalid address rejection (K1, A21, A0, Z99, etc.)
+  - Address formatting
+  - Round-trip conversion consistency
+- Fixed vitest.config.ts to use 'node' environment instead of 'jsdom' to avoid ES module issues
+- All 7 tests pass successfully
+- Committed changes to git
+
+Next task: Task 2.4 - Create SpreadsheetEngine basic structure
